@@ -5,11 +5,17 @@ import co.edu.unbosque.FourPawsCitizens.view.View;
 
 public class Controller {
 
-	Model m;
-	View v;
+	private Model model;
+	private View view;
 
 	public Controller() {
-		 m = new Model();
-		 v = new View();
+		model = new Model();
+		view = new View();
+		this.coordinateActions();
+	}
+
+	public void coordinateActions() {
+		this.view.printMessage("Write your name");
+		this.view.printMessage(this.view.readInput());
 	}
 }
