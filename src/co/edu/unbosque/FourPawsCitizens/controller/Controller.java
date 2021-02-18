@@ -15,7 +15,6 @@ public class Controller {
 	}
 
 	public void coordinateActions() {
-		this.view.printMessage("Write your name");
-		this.view.printMessage(this.view.readInput());
+
 	}
 }
