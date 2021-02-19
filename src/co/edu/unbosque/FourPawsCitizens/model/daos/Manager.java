@@ -9,6 +9,7 @@ public class Manager {
 	/**
 	 * @param pet
 	 */
+
 	public Manager(ArrayList<Pet> pet) {
 		this.setPet(pet);
 	}
@@ -20,5 +21,4 @@ public class Manager {
 	public void setPet(ArrayList<Pet> pet) {
 		this.pet = pet;
 	}
-
 }
