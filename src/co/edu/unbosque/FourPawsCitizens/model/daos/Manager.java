@@ -14,6 +14,9 @@ public class Manager {
 		pets = new ArrayList<Pet>();
 	}
 
+	/**
+	 * Read's the .cvs file and verify the information format
+	 */
 	public void uploadData() {
 		String line = "";
 		try {
