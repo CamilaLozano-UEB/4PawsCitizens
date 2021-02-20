@@ -17,10 +17,8 @@ public class Controller {
 
 	public void coordinateActions() {
 		this.model.getManager().uploadData();
-			this.model.getManager().assignID();
-
-		for (int i = 0; i < this.model.getManager().getPets().size(); i++) {
-			System.out.println(this.model.getManager().getPets().get(i).getId());
-		}
+		this.model.getManager().assignID();
+		System.out.println(this.model.getManager().countBySpecies("CANINO"));
 	}
+
 }
