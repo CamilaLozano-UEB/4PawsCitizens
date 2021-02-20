@@ -5,8 +5,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
-
-import co.edu.unbosque.FourPawsCitizens.model.ExistingIDException;
+import java.util.Objects;
 
 public class Manager {
 
@@ -100,6 +99,15 @@ public class Manager {
 			}
 		}
 		return value;
+	}
+
+	public String findByMicrochip(Long microchip) {
+		String returnValue = "";
+		for (int i = 0; i < this.pets.size(); i++)
+			if (Objects.equals(microchip, this.pets.get(i).getMicrochip()))
+				returnValue = pets.get(i).toString();
+
+		return returnValue;
 	}
 
 	/**
