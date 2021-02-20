@@ -2,13 +2,13 @@ package co.edu.unbosque.FourPawsCitizens.model.daos;
 
 public class Pet {
 
-	String id;
-	long microchip;
-	String sex;
-	String species;
-	String size;
-	boolean potentDangerous;
-	String neighborhood;
+	private String id;
+	private long microchip;
+	private String sex;
+	private String species;
+	private String size;
+	private boolean potentDangerous;
+	private String neighborhood;
 
 	/**
 	 * @param id
@@ -127,7 +127,5 @@ public class Pet {
 	public void setNeighborhood(String neighborhood) {
 		this.neighborhood = neighborhood;
 	}
-	
-	
 
 }
