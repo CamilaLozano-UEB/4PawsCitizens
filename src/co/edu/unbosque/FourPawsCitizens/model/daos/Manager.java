@@ -6,6 +6,8 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import co.edu.unbosque.FourPawsCitizens.model.ExistingIDException;
+
 public class Manager {
 
 	private ArrayList<Pet> pets;
@@ -60,6 +62,44 @@ public class Manager {
 		} catch (NumberFormatException e) {
 			return false;
 		}
+	}
+
+	public void assignID() {
+		int pos = 0;
+		for (Pet pet : pets) {
+			pet.setId(this.generateID(pet, pos));
+			pos++;
+		}
+	}
+
+	private String generateID(Pet pet, int pos) {
+
+		String potentDangerous = "F";
+		String id = "";
+		int lastIndex = String.valueOf(pet.getMicrochip()).length();
+		int numOfCharacters = lastIndex - 3;
+
+		if (pet.isPotentDangerous())
+			potentDangerous = "T";
+
+		do {
+			id = String.valueOf(pet.getMicrochip()).substring(numOfCharacters, lastIndex) + "-"
+					+ pet.getSpecies().substring(0, 1) + pet.getSex().substring(0, 1) + pet.getSize().substring(0, 1)
+					+ potentDangerous + "-" + pet.getNeighborhood();
+			numOfCharacters--;
+		} while (isExistingID(id, pos));
+
+		return id;
+	}
+
+	private boolean isExistingID(String id, int pos) {
+		boolean value = false;
+		for (int i = 0; i < pos; i++) {
+			if (id.equals(this.pets.get(i).getId())) {
+				value = true;
+			}
+		}
+		return value;
 	}
 
 	/**
