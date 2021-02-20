@@ -19,12 +19,23 @@ public class Manager {
 		try {
 			FileReader fr = new FileReader(new File("./Data/pets-citizens.csv"));
 			BufferedReader br = new BufferedReader(fr);
+			br.readLine();
 			line = br.readLine();
+
 			while (line != null) {
+
 				String[] data = line.split(";");
 				line = br.readLine();
-				this.pets.add(new Pet(null, Long.parseLong(data[0]), data[1], data[2], data[3],
-						Boolean.parseBoolean(data[4]), data[4]));
+
+				if (data[4].equals("NO"))
+					data[4] = "false";
+				else
+					data[4] = "true";
+
+				if (data.length > 5)
+					if (this.verifyMicrochip(data[0]))
+						this.pets.add(new Pet(null, Long.parseLong(data[0]), data[1], data[2], data[3],
+								Boolean.parseBoolean(data[4]), data[5]));
 			}
 			br.close();
 			fr.close();
@@ -32,7 +43,20 @@ public class Manager {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+	}
 
+	/**
+	 * 
+	 * @param microchip
+	 * @return true if don't generates a exception, else return false
+	 */
+	private boolean verifyMicrochip(String microchip) {
+		try {
+			Long.parseLong(microchip);
+			return true;
+		} catch (NumberFormatException e) {
+			return false;
+		}
 	}
 
 	/**

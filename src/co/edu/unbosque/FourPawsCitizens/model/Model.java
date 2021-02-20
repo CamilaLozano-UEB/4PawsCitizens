@@ -1,41 +1,27 @@
 package co.edu.unbosque.FourPawsCitizens.model;
 
-public class Model {
-	private String message;
-  private String m;
+import co.edu.unbosque.FourPawsCitizens.model.daos.Manager;
 
+public class Model {
+
+	private Manager manager;
 
 	public Model() {
-    m = "Que la fuerza te acompane";
-		this.message = "Que la fuerza no te acompane";
+		manager = new Manager();
 	}
 
 	/**
-	 * @return the message
+	 * @return the manager
 	 */
-	public String getMessage() {
-		return message;
+	public Manager getManager() {
+		return manager;
 	}
 
 	/**
-	 * @param message the message to set
+	 * @param manager the manager to set
 	 */
-	public void setMessage(String message) {
-		this.message = message;
-	}
-
-	/**
-	 * @return the m
-	 */
-	public String getM() {
-		return m;
-	}
-
-	/**
-	 * @param m the m to set
-	 */
-	public void setM(String m) {
-		this.m = m;
+	public void setManager(Manager manager) {
+		this.manager = manager;
 	}
 
 }

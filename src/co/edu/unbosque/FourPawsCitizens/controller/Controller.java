@@ -15,6 +15,10 @@ public class Controller {
 	}
 
 	public void coordinateActions() {
-
+		this.model.getManager().uploadData();
+		for (int i = 0; i < this.model.getManager().getPets().size(); i++) {
+				System.out.println(this.model.getManager().getPets().get(i).isPotentDangerous() + "" + i);
+		}
+		System.out.println(this.model.getManager().getPets().size());
 	}
 }
