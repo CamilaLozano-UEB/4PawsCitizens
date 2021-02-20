@@ -19,12 +19,12 @@ public class Pet {
 	 * @param potentDangerous
 	 * @param neighborhood
 	 */
-	public Pet(String id, long microchip, String sex, String species, String size, boolean potentDangerous,
+	public Pet(String id, long microchip, String species, String sex, String size, boolean potentDangerous,
 			String neighborhood) {
 		this.id = id;
 		this.microchip = microchip;
-		this.sex = sex;
 		this.species = species;
+		this.sex = sex;
 		this.size = size;
 		this.potentDangerous = potentDangerous;
 		this.neighborhood = neighborhood;
