@@ -10,7 +10,6 @@ import java.util.Objects;
 
 import co.edu.unbosque.FourPawsCitizens.model.ExistingIDException;
 
-
 public class Manager {
 
 	private ArrayList<Pet> pets;
@@ -105,13 +104,13 @@ public class Manager {
 		return value;
 	}
 
-
 	public Pet findByMicrochip(Long microchip) {
 		Pet foundedPet = null;
 		for (Pet pet2 : pets)
 			if (microchip.equals(pet2.getMicrochip()))
 				foundedPet = pet2;
 		return foundedPet;
+	}
 
 	public String countBySpecies(String species) {
 		int cont = 0;
