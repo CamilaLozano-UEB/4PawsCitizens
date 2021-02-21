@@ -5,7 +5,11 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+
+import java.util.Objects;
+
 import co.edu.unbosque.FourPawsCitizens.model.ExistingIDException;
+
 
 public class Manager {
 
@@ -101,13 +105,21 @@ public class Manager {
 		return value;
 	}
 
+
+	public Pet findByMicrochip(Long microchip) {
+		Pet foundedPet = null;
+		for (Pet pet2 : pets)
+			if (microchip.equals(pet2.getMicrochip()))
+				foundedPet = pet2;
+		return foundedPet;
+
 	public String countBySpecies(String species) {
 		int cont = 0;
 		for (int i = 0; i < getPets().size(); i++) {
 			if (species.equals(pets.get(i).getSpecies()))
 				cont++;
 		}
-		return "El número de animales de la especie " + species + " es: " + cont++;
+		return "El nÃºmero de animales de la especie " + species + " es: " + cont++;
 	}
 
 	/**

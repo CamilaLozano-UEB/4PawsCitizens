@@ -128,4 +128,17 @@ public class Pet {
 		this.neighborhood = neighborhood;
 	}
 
+	@Override
+	public String toString() {
+		String id2 = "";
+
+		if (this.id == null)
+			id2 = "NO-ID";
+		else
+			id2 = this.id;
+
+		return "ID: " + id2 + "\nSpecies: " + species + "\nGender: " + sex + "\nSize: " + size
+				+ "\nPotentially Dangerous: " + potentDangerous + "\nNeighborhood: " + neighborhood;
+	}
+
 }
