@@ -17,8 +17,9 @@ public class Controller {
 	public void coordinateActions() {
 		this.model.getManager().uploadData();
 		this.model.getManager().assignID();
-		System.out.println(this.model.getManager().findByMicrochip(Long.parseLong("978101081928801")).toString());
-		System.out.println(this.model.getManager().countBySpecies("CANINO"));
+	//	System.out.println(this.model.getManager().findByMicrochip(Long.parseLong("978101081928801")).toString());
+	//	System.out.println(this.model.getManager().countBySpecies("CANINO"));
+		System.out.println(this.model.getManager().findByMultipleFields("CANINO", "HEMBRA", "MINIATURA", "NO"));
 	}
 
 }

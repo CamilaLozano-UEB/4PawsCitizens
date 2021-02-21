@@ -6,10 +6,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import java.util.Objects;
-
-import co.edu.unbosque.FourPawsCitizens.model.ExistingIDException;
-
 public class Manager {
 
 	private ArrayList<Pet> pets;
@@ -119,6 +115,22 @@ public class Manager {
 				cont++;
 		}
 		return "El número de animales de la especie " + species + " es: " + cont++;
+	}
+
+	public String findByMultipleFields(String species, String sex, String size, String potentDangerous) {
+		String ids = "";
+		
+		if (potentDangerous.equals("NO"))
+			potentDangerous = "false";
+		else
+			potentDangerous = "true";
+		for (Pet pet : pets) {
+			if (sex.equals(pet.getSex()) && species.equals(pet.getSpecies())
+					&& Boolean.parseBoolean(potentDangerous) == pet.isPotentDangerous() && size.equals(pet.getSize())) {
+				ids += pet.getId() + "\n";
+			}
+		}
+		return ids;
 	}
 
 	/**
