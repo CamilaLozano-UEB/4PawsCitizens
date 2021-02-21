@@ -16,11 +16,7 @@ public class Controller {
 
 	public void coordinateActions() {
 		this.model.getManager().uploadData();
-			this.model.getManager().assignID();
-
-//		for (int i = 0; i < this.model.getManager().getPets().size(); i++) {
-//			System.out.println(this.model.getManager().getPets().get(i).getId());
-//		}
-			System.out.println(this.model.getManager().findByMicrochip(Long.parseLong("9781010809288690")));
+		this.model.getManager().assignID();
+		System.out.println(this.model.getManager().findByMicrochip(Long.parseLong("978101081928801")).toString());
 	}
 }

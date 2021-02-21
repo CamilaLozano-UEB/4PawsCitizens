@@ -101,13 +101,12 @@ public class Manager {
 		return value;
 	}
 
-	public String findByMicrochip(Long microchip) {
-		String returnValue = "";
-		for (int i = 0; i < this.pets.size(); i++)
-			if (Objects.equals(microchip, this.pets.get(i).getMicrochip()))
-				returnValue = pets.get(i).toString();
-
-		return returnValue;
+	public Pet findByMicrochip(Long microchip) {
+		Pet foundedPet = null;
+		for (Pet pet2 : pets)
+			if (microchip.equals(pet2.getMicrochip()))
+				foundedPet = pet2;
+		return foundedPet;
 	}
 
 	/**
