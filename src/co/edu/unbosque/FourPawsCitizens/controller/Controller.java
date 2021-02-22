@@ -41,8 +41,6 @@ public class Controller {
 				for (int i = 0; i < this.model.getManager().getPets().size(); i++) {
 				}
 				break;
-
-				
 			default:
 			}
 		}
