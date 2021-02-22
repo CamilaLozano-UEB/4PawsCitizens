@@ -5,6 +5,7 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class Manager {
 
@@ -117,9 +118,31 @@ public class Manager {
 		return "El número de animales de la especie " + species + " es: " + cont++;
 	}
 
+	public List<Pet> findBypotentDangerousInNeighborhood(int n, String position, String neighborhood) {
+
+		ArrayList<Pet> pdinPet = new ArrayList<Pet>();
+		int start = 0;
+		int end = 0;
+
+		for (Pet pet : pets) {
+			if (pet.getNeighborhood().equals(neighborhood) && pet.isPotentDangerous()) {
+				pdinPet.add(pet);
+			}
+		}
+
+		if (position.equals("TOP")) {
+			end = n;
+		} else {
+			end = pdinPet.size();
+			start = end - n;
+		}
+
+		return pdinPet.subList(start, end);
+	}
+
 	public String findByMultipleFields(String species, String sex, String size, String potentDangerous) {
 		String ids = "";
-		
+
 		if (potentDangerous.equals("NO"))
 			potentDangerous = "false";
 		else
