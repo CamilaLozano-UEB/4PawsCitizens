@@ -35,14 +35,10 @@ public class Controller {
 				break;
 			case "5":
 				for (int i = 0; i < this.model.getManager().getPets().size(); i++) {
-					this.view.printMessage(
-							this.model.getManager().findBypotentDangerousInNeighborhood(n, position, neighborhood));
 				}
 				break;
 			case "6":
 				for (int i = 0; i < this.model.getManager().getPets().size(); i++) {
-					this.view.printMessage(
-							this.model.getManager().findByMultipleFields(species, sex, size, potentDangerous));
 				}
 				break;
 
