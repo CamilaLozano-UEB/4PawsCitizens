@@ -7,6 +7,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+import co.edu.unbosque.FourPawsCitizens.model.EmptyAttributeException;
+import co.edu.unbosque.FourPawsCitizens.model.IdentifierExistsException;
+
 public class Manager {
 
 	private ArrayList<Pet> pets;
@@ -36,10 +39,16 @@ public class Manager {
 				else
 					data[4] = "true";
 
-				if (data.length > 5)
+				try {
+					this.verifyEmptyFields(data);
 					if (this.verifyMicrochip(data[0]))
 						this.pets.add(new Pet(null, Long.parseLong(data[0]), data[1], data[2], data[3],
 								Boolean.parseBoolean(data[4]), data[5]));
+				} catch (EmptyAttributeException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
 			}
 			br.close();
 			fr.close();
@@ -47,6 +56,18 @@ public class Manager {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		// 23337
+		System.out.println(pets.size());
+	}
+
+	private void verifyEmptyFields(String[] data) throws EmptyAttributeException {
+
+		for (int i = 0; i < data.length; i++)
+			if (data[i].equals(""))
+				throw new EmptyAttributeException();
+
+		if (data.length <= 5)
+			throw new EmptyAttributeException();
 	}
 
 	/**
@@ -59,6 +80,7 @@ public class Manager {
 			Long.parseLong(microchip);
 			return true;
 		} catch (NumberFormatException e) {
+			e.printStackTrace();
 			return false;
 		}
 	}
@@ -80,22 +102,31 @@ public class Manager {
 
 		if (pet.isPotentDangerous())
 			potentDangerous = "T";
-
-		do {
-			id = String.valueOf(pet.getMicrochip()).substring(numOfCharacters, lastIndex) + "-"
-					+ pet.getSpecies().substring(0, 1) + pet.getSex().substring(0, 1) + pet.getSize().substring(0, 1)
-					+ potentDangerous + "-" + pet.getNeighborhood();
-			numOfCharacters--;
-		} while (isExistingID(id, pos));
+		// Contador de registros
+		int cont = 0;
+		try {
+			do {
+				id = String.valueOf(pet.getMicrochip()).substring(numOfCharacters, lastIndex) + "-"
+						+ pet.getSpecies().substring(0, 1) + pet.getSex().substring(0, 1)
+						+ pet.getSize().substring(0, 1) + potentDangerous + "-" + pet.getNeighborhood();
+				numOfCharacters--;
+				cont++;
+			} while (isExistingID(id, pos));
+			cont = 0;
+		} catch (IdentifierExistsException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 		return id;
 	}
 
-	private boolean isExistingID(String id, int pos) {
+	private boolean isExistingID(String id, int pos) throws IdentifierExistsException {
 		boolean value = false;
 		for (int i = 0; i < pos; i++) {
 			if (id.equals(this.pets.get(i).getId())) {
 				value = true;
+				throw new IdentifierExistsException();
 			}
 		}
 		return value;

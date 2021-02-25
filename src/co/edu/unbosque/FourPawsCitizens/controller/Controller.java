@@ -15,9 +15,10 @@ public class Controller {
 	}
 
 	public void coordinateMenu() {
-		
+
 		this.model.getManager().uploadData();
-//		String option = this.view.printOptionsMenu();
+		this.model.getManager().assignID();
+		// String option = this.view.printOptionsMenu();
 //		while (!option.equals("7")) {
 //			switch (option) {
 //			case "1":
