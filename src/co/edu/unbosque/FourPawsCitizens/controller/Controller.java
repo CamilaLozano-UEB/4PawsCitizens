@@ -1,6 +1,7 @@
 package co.edu.unbosque.FourPawsCitizens.controller;
 
 import co.edu.unbosque.FourPawsCitizens.model.Manager;
+import co.edu.unbosque.FourPawsCitizens.model.dtos.Pet;
 import co.edu.unbosque.FourPawsCitizens.view.View;
 
 public class Controller {
@@ -11,25 +12,32 @@ public class Controller {
 	public Controller() {
 		view = new View();
 		manager = new Manager();
+		this.manager.uploadData();
 		this.coordinateMenu();
 	}
 
 	public void coordinateMenu() {
-		this.view.printOptionsMenu();
-		this.manager.uploadData();
 		String option = this.view.printOptionsMenu();
-		if (0 < Integer.parseInt(option) && Integer.parseInt(option) < 7) {
-			while (!option.equals("6")) {
+		do {
+			if (0 < Integer.parseInt(option) && Integer.parseInt(option) < 7) {
+
 				switch (option) {
 				case "1":
 					this.manager.assignID();
 					this.view.printMessage("El proceso de asignación de ids ha finalizado");
 					break;
 				case "2":
-					this.view.printMessage(
-							this.manager.findByMicrochip(Long.parseLong(this.view.readInput())).toString());
+					Long microchip = this.view.findByMicrochipPrint();
+					if (microchip != null) {
+						Pet pet = this.manager.findByMicrochip(microchip);
+						if (pet != null)
+							this.view.printMessage(pet.toString());
+						else
+							this.view.printMessage("No se encontró ninguna mascota con ese microchip");
+					}
 					break;
 				case "3":
+					
 					this.view.printMessage(this.manager.countBySpecies(this.view.readInput()));
 					break;
 				case "4":
@@ -42,8 +50,9 @@ public class Controller {
 					break;
 				default:
 				}
+				option = this.view.printOptionsMenu();
 			}
-		}
+		} while (!option.equals("6"));
 
 	}
 

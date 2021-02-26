@@ -118,9 +118,13 @@ public class Manager {
 
 	public Pet findByMicrochip(Long microchip) {
 		Pet foundedPet = null;
-		for (Pet pet2 : pets)
-			if (microchip.equals(pet2.getMicrochip()))
-				foundedPet = pet2;
+		for (int i = 0; i < this.pets.size(); i++) {
+			if (microchip.equals(this.pets.get(i).getMicrochip())) {
+				foundedPet = this.pets.get(i);
+				i = this.pets.size();
+			}
+		}
+
 		return foundedPet;
 	}
 
