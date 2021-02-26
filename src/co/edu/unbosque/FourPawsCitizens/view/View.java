@@ -25,7 +25,7 @@ public class View {
 	}
 
 	public Long findByMicrochipPrint() {
-		System.out.println("Ingrese el microchip:");
+		System.out.println("Ingrese el microchip");
 		try {
 			return Long.parseLong(scan.nextLine());
 		} catch (Exception e) {
@@ -35,6 +35,7 @@ public class View {
 	}
 
 	public String recieveSpecie() {
+		System.out.println("Ingrese la especie");
 		String specie = scan.nextLine();
 		if (specie.equalsIgnoreCase("FELINO") || specie.equalsIgnoreCase("CANINO")) {
 			return specie;
