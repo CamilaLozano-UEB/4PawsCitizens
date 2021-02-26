@@ -1,5 +1,7 @@
 package co.edu.unbosque.FourPawsCitizens.controller;
 
+import java.util.List;
+
 import co.edu.unbosque.FourPawsCitizens.model.Manager;
 import co.edu.unbosque.FourPawsCitizens.model.dtos.Pet;
 import co.edu.unbosque.FourPawsCitizens.view.View;
@@ -44,8 +46,20 @@ public class Controller {
 						this.view.printMessage("El dato ingresado no corresponde a las especies");
 					break;
 				case "4":
-					for (int i = 0; i < this.manager.getPets().size(); i++) {
+					if (this.manager.getPets().get(0).getId() != null) {
+						String data[] = this.view.receivefindBypotentDangerousInNeighborhood();
+						if (data != null) {
+							List<Pet> dangerousPet = this.manager
+									.findBypotentDangerousInNeighborhood(Integer.parseInt(data[0]), data[1], data[2]);
+							for (int i = 0; i < dangerousPet.size(); i++) {
+								this.view.printMessage(dangerousPet.get(i).toString() + "\n\n");
+							}
+
+						} else {
+							view.printMessage("No se han generado los id´s");
+						}
 					}
+
 					break;
 				case "5":
 					if (this.manager.getPets().get(0).getId() != null) {
@@ -54,7 +68,7 @@ public class Controller {
 							this.view.printMessage(
 									this.manager.findByMultipleFields(data[0], data[1], data[2], data[3]));
 					} else {
-						view.printMessage("No se han cargado los id´s");
+						view.printMessage("No se han generado los id´s");
 					}
 					break;
 				default:

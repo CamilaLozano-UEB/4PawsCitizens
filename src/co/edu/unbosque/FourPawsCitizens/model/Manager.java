@@ -33,7 +33,6 @@ public class Manager {
 			line = br.readLine();
 
 			while (line != null) {
-				System.out.println(line);
 				String[] data = line.split(";");
 				line = br.readLine();
 
@@ -135,7 +134,7 @@ public class Manager {
 			if (species.equals(pets.get(i).getSpecies()))
 				cont++;
 
-		return "El n�mero de animales de la especie " + species + " es: " + cont++;
+		return "El número de animales de la especie " + species + " es: " + cont++;
 	}
 
 	public List<Pet> findBypotentDangerousInNeighborhood(int n, String position, String neighborhood) {
@@ -146,6 +145,8 @@ public class Manager {
 
 		for (Pet pet : pets) {
 			if (pet.getNeighborhood().equals(neighborhood) && pet.isPotentDangerous()) {
+				if (pet.getId().equals(null))
+					pet.setId("NO-ID");
 				pdinPet.add(pet);
 			}
 		}

@@ -39,13 +39,36 @@ public class View {
 			return null;
 	}
 
+	public String[] receivefindBypotentDangerousInNeighborhood() {
+		System.out.println(
+				"Ingrese los datos en el siguiente orden y sin espacios: Número, Posición (TOP/LAST), Localidad");
+		String[] data = scan.nextLine().toUpperCase().replaceAll(" ", "").split(",");
+		try {
+			Integer.parseInt(data[0]);
+		} catch (NumberFormatException e) {
+			System.out.println("Ingrese solo números en el primer valor, usuario pendejo");
+			return null;
+		}
+		if (data.length != 3) {
+			System.out.println("Error en el ingreso de datos");
+			return null;
+		} else if (!data[1].equals("TOP") || !data[1].equals("LAST")) {
+			System.out.println("Error en el ingreso de la posición");
+			return null;
+		} else if (data[2].equals(null)) {
+			System.out.println("Error en el ingreso de la localidad");
+			return null;
+		}
+		return data;
+	}
+
 	public String[] recieveMultipleFields() {
-	
+
 		System.out.println(
 				"Ingrese los datos de la siguiente manera \"ESPECIE (FELINO / CANINO), SEXO (MACHO / HEMBRA), TAMAÑO (PEQUEÑO / MEDIANO / GRANDE), PELIGROSO (SI/NO)\"");
 		String[] data = scan.nextLine().toUpperCase().replaceAll(" ", "").split(",");
 
-		if (data.length < 4) {
+		if (data.length != 4) {
 			System.out.println("Datos incompletos");
 			return null;
 
