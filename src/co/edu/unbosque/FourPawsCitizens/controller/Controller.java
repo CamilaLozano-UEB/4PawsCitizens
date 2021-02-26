@@ -37,8 +37,11 @@ public class Controller {
 					}
 					break;
 				case "3":
-					
-					this.view.printMessage(this.manager.countBySpecies(this.view.readInput()));
+					String specie = this.view.recieveSpecie();
+					if (specie != null)
+						this.view.printMessage(this.manager.countBySpecies(this.view.readInput()));
+					else
+						this.view.printMessage("El dato ingresado no es una especie");
 					break;
 				case "4":
 					for (int i = 0; i < this.manager.getPets().size(); i++) {
