@@ -38,7 +38,7 @@ public class View {
 		System.out.println("Ingrese la especie");
 		String specie = scan.nextLine();
 		if (specie.equalsIgnoreCase("FELINO") || specie.equalsIgnoreCase("CANINO")) {
-			return specie;
+			return specie.toUpperCase();
 		} else {
 			return null;
 		}

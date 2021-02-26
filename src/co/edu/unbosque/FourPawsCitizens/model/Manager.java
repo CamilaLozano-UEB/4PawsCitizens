@@ -130,10 +130,10 @@ public class Manager {
 
 	public String countBySpecies(String species) {
 		int cont = 0;
-		for (int i = 0; i < getPets().size(); i++) {
+		for (int i = 0; i < getPets().size(); i++)
 			if (species.equals(pets.get(i).getSpecies()))
 				cont++;
-		}
+		
 		return "El número de animales de la especie " + species + " es: " + cont++;
 	}
 
