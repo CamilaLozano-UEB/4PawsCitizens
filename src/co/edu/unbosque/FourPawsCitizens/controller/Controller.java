@@ -15,33 +15,33 @@ public class Controller {
 	}
 
 	public void coordinateMenu() {
+		this.view.printOptionsMenu();
 		this.manager.uploadData();
 		String option = this.view.printOptionsMenu();
-		while (!option.equals("7")) {
-			switch (option) {
-			case "1":
-				this.manager.uploadData();
-				this.view.printMessage("El proceso de carga del archivo ha finalizado");
-				break;
-			case "2":
-				this.manager.assignID();
-				this.view.printMessage("El proceso de asignación de ids ha finalizado");
-				break;
-			case "3":
-				this.view.printMessage(this.manager.findByMicrochip(Long.parseLong(this.view.readInput())).toString());
-				break;
-			case "4":
-				this.view.printMessage(this.manager.countBySpecies(this.view.readInput()));
-				break;
-			case "5":
-				for (int i = 0; i < this.manager.getPets().size(); i++) {
+		if (0 < Integer.parseInt(option) && Integer.parseInt(option) < 7) {
+			while (!option.equals("6")) {
+				switch (option) {
+				case "1":
+					this.manager.assignID();
+					this.view.printMessage("El proceso de asignación de ids ha finalizado");
+					break;
+				case "2":
+					this.view.printMessage(
+							this.manager.findByMicrochip(Long.parseLong(this.view.readInput())).toString());
+					break;
+				case "3":
+					this.view.printMessage(this.manager.countBySpecies(this.view.readInput()));
+					break;
+				case "4":
+					for (int i = 0; i < this.manager.getPets().size(); i++) {
+					}
+					break;
+				case "5":
+					for (int i = 0; i < this.manager.getPets().size(); i++) {
+					}
+					break;
+				default:
 				}
-				break;
-			case "6":
-				for (int i = 0; i < this.manager.getPets().size(); i++) {
-				}
-				break;
-			default:
 			}
 		}
 

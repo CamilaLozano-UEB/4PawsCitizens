@@ -20,7 +20,7 @@ public class View {
 
 	public String printOptionsMenu() {
 		System.out.println(
-				"Welcome \nSelect an option: \n1. Upload Data. \n2. Assign ID. \n3. Find By Microchip. \n4. Count By Species. \n5. Find By Potent Dangerous in Neighborhood. \n6. Find By Multiple fields. \n7. Exit.");
+				"Welcome, the data has already been loaded. Please, Select an option: \n1. Assign ID. \n2. Find By Microchip. \n3. Count By Species. \n4. Find By Potent Dangerous in Neighborhood. \n5. Find By Multiple fields. \n6. Exit.");
 		return this.readInput();
 	}
 }
