@@ -48,7 +48,13 @@ public class Controller {
 					}
 					break;
 				case "5":
-					for (int i = 0; i < this.manager.getPets().size(); i++) {
+					if (this.manager.getPets().get(0).getId() != null) {
+						String[] data = this.view.recieveMultipleFields();
+						if (data != null)
+							this.view.printMessage(
+									this.manager.findByMultipleFields(data[0], data[1], data[2], data[3]));
+					} else {
+						view.printMessage("No se han cargado los id´s");
 					}
 					break;
 				default:

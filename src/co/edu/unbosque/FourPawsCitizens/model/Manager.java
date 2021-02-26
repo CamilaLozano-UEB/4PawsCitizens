@@ -2,8 +2,9 @@ package co.edu.unbosque.FourPawsCitizens.model;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileReader;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,13 +26,14 @@ public class Manager {
 	public void uploadData() {
 		String line = "";
 		try {
-			FileReader fr = new FileReader(new File("./Data/pets-citizens.csv"));
-			BufferedReader br = new BufferedReader(fr);
+			BufferedReader br = new BufferedReader(
+					new InputStreamReader(new FileInputStream(new File("./Data/pets-citizens.csv")), "ISO-8859-1"));
+
 			br.readLine();
 			line = br.readLine();
 
 			while (line != null) {
-
+				System.out.println(line);
 				String[] data = line.split(";");
 				line = br.readLine();
 
@@ -52,7 +54,6 @@ public class Manager {
 
 			}
 			br.close();
-			fr.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -133,8 +134,8 @@ public class Manager {
 		for (int i = 0; i < getPets().size(); i++)
 			if (species.equals(pets.get(i).getSpecies()))
 				cont++;
-		
-		return "El número de animales de la especie " + species + " es: " + cont++;
+
+		return "El n�mero de animales de la especie " + species + " es: " + cont++;
 	}
 
 	public List<Pet> findBypotentDangerousInNeighborhood(int n, String position, String neighborhood) {
@@ -166,12 +167,11 @@ public class Manager {
 			potentDangerous = "false";
 		else
 			potentDangerous = "true";
-		for (Pet pet : pets) {
+		for (Pet pet : pets)
 			if (sex.equals(pet.getSex()) && species.equals(pet.getSpecies())
-					&& Boolean.parseBoolean(potentDangerous) == pet.isPotentDangerous() && size.equals(pet.getSize())) {
+					&& Boolean.parseBoolean(potentDangerous) == pet.isPotentDangerous() && size.equals(pet.getSize()))
 				ids += pet.getId() + "\n";
-			}
-		}
+
 		return ids;
 	}
 

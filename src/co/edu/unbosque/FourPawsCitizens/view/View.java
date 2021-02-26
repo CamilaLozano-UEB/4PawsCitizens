@@ -14,14 +14,10 @@ public class View {
 		System.out.println(message);
 	}
 
-	public String readInput() {
-		return scan.nextLine();
-	}
-
 	public String printOptionsMenu() {
 		System.out.println(
 				"Welcome, the data has already been loaded. Please, Select an option: \n1. Assign ID. \n2. Find By Microchip. \n3. Count By Species. \n4. Find By Potent Dangerous in Neighborhood. \n5. Find By Multiple fields. \n6. Exit.");
-		return this.readInput();
+		return scan.nextLine();
 	}
 
 	public Long findByMicrochipPrint() {
@@ -36,11 +32,41 @@ public class View {
 
 	public String recieveSpecie() {
 		System.out.println("Ingrese la especie");
-		String specie = scan.nextLine();
-		if (specie.equalsIgnoreCase("FELINO") || specie.equalsIgnoreCase("CANINO")) {
-			return specie.toUpperCase();
-		} else {
+		String specie = scan.nextLine().toUpperCase();
+		if (specie.equals("FELINO") || specie.equals("CANINO"))
+			return specie;
+		else
 			return null;
+	}
+
+	public String[] recieveMultipleFields() {
+	
+		System.out.println(
+				"Ingrese los datos de la siguiente manera \"ESPECIE (FELINO / CANINO), SEXO (MACHO / HEMBRA), TAMAÑO (PEQUEÑO / MEDIANO / GRANDE), PELIGROSO (SI/NO)\"");
+		String[] data = scan.nextLine().toUpperCase().replaceAll(" ", "").split(",");
+
+		if (data.length < 4) {
+			System.out.println("Datos incompletos");
+			return null;
+
+		} else if (!data[0].equals("FELINO") && !data[0].equals("CANINO")) {
+			System.out.println("El valor de la especie no es correcto!");
+			return null;
+
+		} else if (!data[1].equals("MACHO") && !data[1].equals("HEMBRA")) {
+			System.out.println("El valor del sexo no es correcto!");
+			return null;
+
+		} else if (!data[2].equals("PEQUEÑO") && !data[2].equals("MEDIANO") && !data[1].equals("GRANDE")) {
+			System.out.println("El valor del tamaño no es correcto!");
+			return null;
+
+		} else if (!data[3].equals("SI") && !data[3].equals("NO")) {
+			System.out.println("El valor potent dangerous no es correcto!");
+			return null;
+
+		} else {
+			return data;
 		}
 	}
 
