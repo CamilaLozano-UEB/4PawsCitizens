@@ -3,7 +3,9 @@ package co.edu.unbosque.FourPawsCitizens.model.daos;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,12 +43,12 @@ public class Manager {
 
 				try {
 					this.verifyEmptyFields(data);
-					if (this.verifyMicrochip(data[0]))
-						this.pets.add(new Pet(null, Long.parseLong(data[0]), data[1], data[2], data[3],
-								Boolean.parseBoolean(data[4]), data[5]));
-				} catch (EmptyAttributeException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+					this.verifyMicrochip(data[0]);
+
+					this.pets.add(new Pet(null, Long.parseLong(data[0]), data[1], data[2], data[3],
+							Boolean.parseBoolean(data[4]), data[5]));
+				} catch (EmptyAttributeException | NumberFormatException e) {
+
 				}
 
 			}
@@ -75,61 +77,44 @@ public class Manager {
 	 * @param microchip
 	 * @return true if don't generates a exception, else return false
 	 */
-	private boolean verifyMicrochip(String microchip) {
+	private void verifyMicrochip(String microchip) throws NumberFormatException {
 		try {
 			Long.parseLong(microchip);
-			return true;
 		} catch (NumberFormatException e) {
-			e.printStackTrace();
-			return false;
+			throw new NumberFormatException();
 		}
 	}
 
 	public void assignID() {
 		int pos = 0;
 		for (Pet pet : pets) {
-			pet.setId(this.generateID(pet, pos));
+			pet.setId(this.generateID(pet, pos, 3));
 			pos++;
 		}
 	}
 
-	private String generateID(Pet pet, int pos) {
-
+	private String generateID(Pet pet, int pos, int lessNumber) {
 		String potentDangerous = "F";
-		String id = "";
 		int lastIndex = String.valueOf(pet.getMicrochip()).length();
-		int numOfCharacters = lastIndex - 3;
 
 		if (pet.isPotentDangerous())
 			potentDangerous = "T";
-		// Contador de registros
-		int cont = 0;
-		try {
-			do {
-				id = String.valueOf(pet.getMicrochip()).substring(numOfCharacters, lastIndex) + "-"
-						+ pet.getSpecies().substring(0, 1) + pet.getSex().substring(0, 1)
-						+ pet.getSize().substring(0, 1) + potentDangerous + "-" + pet.getNeighborhood();
-				numOfCharacters--;
-				cont++;
-			} while (isExistingID(id, pos));
-			cont = 0;
-		} catch (IdentifierExistsException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
 
-		return id;
+		String id = String.valueOf(pet.getMicrochip()).substring(lastIndex - lessNumber, lastIndex) + "-"
+				+ pet.getSpecies().substring(0, 1) + pet.getSex().substring(0, 1) + pet.getSize().substring(0, 1)
+				+ potentDangerous + "-" + pet.getNeighborhood();
+		try {
+			this.isExistingID(id, pos);
+			return id;
+		} catch (IdentifierExistsException e) {
+			return this.generateID(pet, pos, lessNumber + 1);
+		}
 	}
 
-	private boolean isExistingID(String id, int pos) throws IdentifierExistsException {
-		boolean value = false;
-		for (int i = 0; i < pos; i++) {
-			if (id.equals(this.pets.get(i).getId())) {
-				value = true;
+	private void isExistingID(String id, int pos) throws IdentifierExistsException {
+		for (int i = 0; i < pos; i++)
+			if (id.equals(this.pets.get(i).getId()))
 				throw new IdentifierExistsException();
-			}
-		}
-		return value;
 	}
 
 	public Pet findByMicrochip(Long microchip) {
