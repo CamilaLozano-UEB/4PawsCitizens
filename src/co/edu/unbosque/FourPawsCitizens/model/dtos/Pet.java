@@ -1,4 +1,4 @@
-package co.edu.unbosque.FourPawsCitizens.model.daos;
+package co.edu.unbosque.FourPawsCitizens.model.dtos;
 
 public class Pet {
 

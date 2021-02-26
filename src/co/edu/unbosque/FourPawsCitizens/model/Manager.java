@@ -1,16 +1,15 @@
-package co.edu.unbosque.FourPawsCitizens.model.daos;
+package co.edu.unbosque.FourPawsCitizens.model;
 
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.List;
 
-import co.edu.unbosque.FourPawsCitizens.model.EmptyAttributeException;
-import co.edu.unbosque.FourPawsCitizens.model.IdentifierExistsException;
+import co.edu.unbosque.FourPawsCitizens.Excepcions.EmptyAttributeException;
+import co.edu.unbosque.FourPawsCitizens.Excepcions.IdentifierExistsException;
+import co.edu.unbosque.FourPawsCitizens.model.dtos.Pet;
 
 public class Manager {
 

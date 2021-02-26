@@ -1,4 +1,4 @@
-package co.edu.unbosque.FourPawsCitizens.model;
+package co.edu.unbosque.FourPawsCitizens.Excepcions;
 
 public class IdentifierExistsException extends Exception {
 
