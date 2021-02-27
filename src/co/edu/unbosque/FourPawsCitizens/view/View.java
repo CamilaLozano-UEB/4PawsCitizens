@@ -6,15 +6,12 @@ public class View {
 
 	private Scanner scan;
 
-	/**
-	 * @param scan
-	 */
 	public View() {
 		scan = new Scanner(System.in);
 	}
 
 	/**
-	 * Método que recibe un parametro de tipo string que imprime un mensaje en
+	 * Método que recibe un parametro de tipo String que imprime un mensaje en
 	 * consola
 	 * 
 	 * @param message
@@ -25,14 +22,14 @@ public class View {
 	}
 
 	/**
-	 * Método que captura las opciones desde la consola
+	 * Método que imprime el menú y captura la opcion elegida desde la consola
 	 * 
 	 * @return
 	 */
 
 	public String printOptionsMenu() {
 		System.out.println(
-				"Welcome, the data has already been loaded. Please, Select an option: \n1. Assign ID. \n2. Find By Microchip. \n3. Count By Species. \n4. Find By Potent Dangerous in Neighborhood. \n5. Find By Multiple fields. \n6. Exit.");
+				"Por favor seleccione una opción: \n1. Asignar ID. \n2. Buscar por microchip. \n3. Contar por especies. \n4. Buscar por potencialmente peligroso en la localidad. \n5. Buscar por múltiples campos. \n6. Salir.");
 		return scan.nextLine();
 	}
 

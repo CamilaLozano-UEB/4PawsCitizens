@@ -11,10 +11,6 @@ public class Controller {
 	private View view;
 	private Manager manager;
 
-	/**
-	 * @param view
-	 * @param manager
-	 */
 	public Controller() {
 		view = new View();
 		manager = new Manager();
@@ -28,6 +24,7 @@ public class Controller {
 	 */
 
 	public void coordinateMenu() {
+		view.printMessage("Welcome, the data has already been loaded.");
 		String option = this.view.printOptionsMenu();
 		do {
 			switch (option) {
