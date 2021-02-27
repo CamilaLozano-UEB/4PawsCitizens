@@ -21,4 +21,9 @@
 		
 		° Si no selecciona la primera opción que genera los id´s, el programa podra seguir con sus funcionalidades correspondientes, pero la información que solicite podria estar sin id. No obstante, si hay una opción que requiere del id, sera necesario generarlo.
 
+4. Lenguaje de Codificación
+	-
+
+	- UTF-8	
+
 
