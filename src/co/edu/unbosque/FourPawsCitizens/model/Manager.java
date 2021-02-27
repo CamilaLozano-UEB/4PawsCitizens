@@ -57,8 +57,6 @@ public class Manager {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		// 23337
-		System.out.println(pets.size());
 	}
 
 	private void verifyEmptyFields(String[] data) throws EmptyAttributeException {
@@ -145,7 +143,7 @@ public class Manager {
 
 		for (Pet pet : pets) {
 			if (pet.getNeighborhood().equals(neighborhood) && pet.isPotentDangerous()) {
-				if (pet.getId().equals(null))
+				if (pet.getId() == null)
 					pet.setId("NO-ID");
 				pdinPet.add(pet);
 			}
