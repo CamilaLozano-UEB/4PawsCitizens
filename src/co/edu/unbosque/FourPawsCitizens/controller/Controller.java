@@ -11,12 +11,21 @@ public class Controller {
 	private View view;
 	private Manager manager;
 
+	/**
+	 * @param view
+	 * @param manager
+	 */
 	public Controller() {
 		view = new View();
 		manager = new Manager();
 		this.manager.uploadData();
 		this.coordinateMenu();
 	}
+
+	/**
+	 * Método que coordina todo el menu de opciones, recibe los datos validados
+	 * desde la consola y conecta la clase y métodos de manager con la clase view
+	 */
 
 	public void coordinateMenu() {
 		String option = this.view.printOptionsMenu();

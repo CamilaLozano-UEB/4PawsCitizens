@@ -6,19 +6,42 @@ public class View {
 
 	private Scanner scan;
 
+	/**
+	 * @param scan
+	 */
 	public View() {
 		scan = new Scanner(System.in);
 	}
 
+	/**
+	 * Método que recibe un parametro de tipo string que imprime un mensaje en
+	 * consola
+	 * 
+	 * @param message
+	 */
+
 	public void printMessage(String message) {
 		System.out.println(message);
 	}
+
+	/**
+	 * Método que captura las opciones desde la consola
+	 * 
+	 * @return
+	 */
 
 	public String printOptionsMenu() {
 		System.out.println(
 				"Welcome, the data has already been loaded. Please, Select an option: \n1. Assign ID. \n2. Find By Microchip. \n3. Count By Species. \n4. Find By Potent Dangerous in Neighborhood. \n5. Find By Multiple fields. \n6. Exit.");
 		return scan.nextLine();
 	}
+
+	/**
+	 * Método que captura el ingreso del microchip y valida que su valor sea
+	 * correcto.
+	 * 
+	 * @return
+	 */
 
 	public Long findByMicrochipPrint() {
 		System.out.println("Ingrese el microchip");
@@ -30,6 +53,13 @@ public class View {
 		}
 	}
 
+	/**
+	 * Método que captura desde consola las dos especies, valida su valor y lo
+	 * retorna
+	 * 
+	 * @return
+	 */
+
 	public String recieveSpecie() {
 		System.out.println("Ingrese la especie");
 		String specie = scan.nextLine().toUpperCase();
@@ -38,6 +68,13 @@ public class View {
 		else
 			return null;
 	}
+
+	/**
+	 * Método que captura desde la consola los valores de número, posición y la
+	 * localidad, los válida y los retorna en forma de array
+	 * 
+	 * @return
+	 */
 
 	public String[] receivefindBypotentDangerousInNeighborhood() {
 		System.out.println(
@@ -55,9 +92,16 @@ public class View {
 		} else if (!data[1].equals("TOP") && !data[1].equals("LAST")) {
 			System.out.println("Error en el ingreso de la posición");
 			return null;
-		} 
+		}
 		return data;
 	}
+
+	/**
+	 * Método que captura los valores de especie, sexo, tamaño y potencial de
+	 * peligro, los valida y los retorna en forma de array
+	 * 
+	 * @return
+	 */
 
 	public String[] recieveMultipleFields() {
 		System.out.println(
