@@ -26,4 +26,8 @@
 
 	- UTF-8	
 
+5. Lectura del Archivo
+	-
+	- Paramentro de lectura del archivo: ISO-8859-1
+
 
