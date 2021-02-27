@@ -24,7 +24,7 @@ public class Controller {
 	 */
 
 	public void coordinateMenu() {
-		view.printMessage("Welcome, the data has already been loaded.");
+		view.printMessage("Bienvenido, la información ha sido cargada.");
 		String option = this.view.printOptionsMenu();
 		do {
 			switch (option) {
