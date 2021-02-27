@@ -19,6 +19,7 @@
 	2. Seleccione cualquiera de las opciones para iniciar.
 
 		° Si no selecciona la primera opción que genera los id´s el programa podra seguir con sus funcionalidades correspondientes a diferencia que la información que solicite estara sin id. La otra diferencia es de la ultima opción que obligatoriamente si lo necesita.
-		° Si por el contrario selecciona esa opción
+		° Si por el contrario selecciona esa opción, entonces el programa seguira su funcionalidad correspondiente.
+	3. 
 
 
