@@ -29,6 +29,7 @@ public class Controller {
 		do {
 			switch (option) {
 			case "1":
+				this.view.printMessage("Espere mientras se generan los id´s");
 				this.manager.assignID();
 				this.view.printMessage("El proceso de asignación de ids ha finalizado");
 				break;
