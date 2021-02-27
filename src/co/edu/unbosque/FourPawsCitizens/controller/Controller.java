@@ -3,7 +3,7 @@ package co.edu.unbosque.FourPawsCitizens.controller;
 import java.util.List;
 
 import co.edu.unbosque.FourPawsCitizens.model.Manager;
-import co.edu.unbosque.FourPawsCitizens.model.dtos.Pet;
+import co.edu.unbosque.FourPawsCitizens.model.dto.Pet;
 import co.edu.unbosque.FourPawsCitizens.view.View;
 
 public class Controller {

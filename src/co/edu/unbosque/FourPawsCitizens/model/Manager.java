@@ -8,9 +8,9 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
 
-import co.edu.unbosque.FourPawsCitizens.Excepcions.EmptyAttributeException;
-import co.edu.unbosque.FourPawsCitizens.Excepcions.IdentifierExistsException;
-import co.edu.unbosque.FourPawsCitizens.model.dtos.Pet;
+import co.edu.unbosque.FourPawsCitizens.exceptions.EmptyAttributeException;
+import co.edu.unbosque.FourPawsCitizens.exceptions.IdentifierExistsException;
+import co.edu.unbosque.FourPawsCitizens.model.dto.Pet;
 
 public class Manager {
 
